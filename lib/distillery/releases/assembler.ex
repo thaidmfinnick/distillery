@@ -1,4 +1,4 @@
-defmodule Distillery.Releases.Assembler do
+  defmodule Distillery.Releases.Assembler do
   @moduledoc """
   This module is responsible for assembling a release based on a `Distillery.Releases.Config`
   struct. It creates the release directory, copies applications, and generates release-specific
@@ -860,7 +860,7 @@ defmodule Distillery.Releases.Assembler do
     # no work around for this
     old_cwd = File.cwd!()
     File.cd!(output_dir)
-    :ok = :release_handler.create_RELEASES('./', 'releases', '#{relfile}', [])
+    :ok = :release_handler.create_RELEASES('./', Path.join([File.cwd!(), 'releases']), '#{relfile}', [])
     File.cd!(old_cwd)
     :ok
   end
